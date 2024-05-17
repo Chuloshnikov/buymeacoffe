@@ -7,7 +7,7 @@ const Header = () => {
          <div className="flex justify-between max-w-2xl mx-auto px-4 py-4">
             <Link href={'/'} className="inline-flex gap-1 items-center">
                 <BiCoffeeTogo className="h-8 w-8"/>
-                <span className="-ml-1 text-lg font-semibold">Buy me a coffee</span>
+                <span className="-ml-1 mt-2 text-lg font-semibold">Buy me a coffee</span>
             </Link>
             <nav className="mt-2 flex gap-4 items-center">
                 <Link href="/about">
