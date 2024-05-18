@@ -1,7 +1,10 @@
+"use client"
+import {Session} from "next-auth";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { BiCoffeeTogo } from "react-icons/bi";
 
-const Header = () => {
+const Header = ({session}: {session:Session}) => {
   return (
     <header className="mb-16">
          <div className="flex justify-between max-w-2xl mx-auto px-4 py-4">
@@ -20,7 +23,10 @@ const Header = () => {
                     Contact
                 </Link>
                 <div className="flex gap-4">
-                    <button className="border-2 border-gray-200 rounded-full px-4 py-2 ml-4 hover:bg-gray-200 duration-300">
+                    <button 
+                    onClick={() => signIn('google')}
+                    className="border-2 border-gray-200 rounded-full px-4 py-2 ml-4 hover:bg-gray-200 duration-300"
+                    >
                         Login
                     </button>
                     <button className="bg-yellow-300 rounded-full px-4 py-2 hover:bg-yellow-400 duration-300">
