@@ -3,11 +3,15 @@ import {Session} from "next-auth";
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { BiCoffeeTogo } from "react-icons/bi";
-import parseFullName from 'parse-full-name';
+import {parseFullName} from 'parse-full-name';
+
+import { FaRegUserCircle } from "react-icons/fa";
 
 const Header = ({session}: {session:Session|null}) => {
     const name = session?.user?.name || '';
-    const firstName = parseFullName(name);
+    const {first:firstName} = parseFullName(name);
+    const image = session?.user?.image;
+
   return (
     <header className="mb-16">
          <div className="flex justify-between max-w-2xl mx-auto px-4 py-4">
@@ -27,7 +31,8 @@ const Header = ({session}: {session:Session|null}) => {
                 </Link>
                 <div className="flex gap-4">
                     {session && (
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 bg-gray-200 rounded-full pl-2">
+                            {image ? <Image src={image}/> : <FaRegUserCircle />}
                              {firstName}
                             <button 
                             onClick={() => signOut()}
