@@ -9,7 +9,7 @@ export default async function ProfilePage(args) {
             </div>
             <div>
                 <label className="block mt-4">username</label>
-                <input id="usernameIn" type="text" placeholder="username"/>
+                <input id="userNameIn" type="text" placeholder="username"/>
             </div>
             <div>
                 <label className="block mt-4">display name</label>
