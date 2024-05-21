@@ -8,16 +8,21 @@ export default async function ProfilePage(args) {
                 <div>cover image</div>
             </div>
             <div>
-                <input type="text" placeholder="username"/>
+                <label className="block mt-4">username</label>
+                <input id="usernameIn" type="text" placeholder="username"/>
             </div>
             <div>
-                <input type="text" placeholder="display name"/>
+                <label className="block mt-4">display name</label>
+                <input id="displayNameIn" type="text" placeholder="display name"/>
             </div>
             <div>
-                <textarea name="" placeholder="bio" className=""/>
+            <label className="block mt-4">bio</label>
+                <textarea id="bioIn" name="" placeholder="bio" className=""/>
             </div>
             <div>
-                <button>Save profile</button>
+                <button className="bg-yellow-300 px-4 py-2 rounded-lg mt-4">
+                    Save profile
+                </button>
             </div>
             <div>
                 donations list...
