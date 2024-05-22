@@ -37,7 +37,7 @@ const Header = ({session}: {session:Session|null}) => {
                             className="flex gap-2"
                             href={'/profile'}
                             >
-                                {img ? <Image src={img} width={24} height={24} className="rounded-full"/> : <FaRegUserCircle className="w-6 h-6"/>}
+                                {img ? <Image src={img} width={24} height={24} className="rounded-full" alt="avatar"/> : <FaRegUserCircle className="w-6 h-6"/>}
                                 {firstName}
                             </Link>
                            
