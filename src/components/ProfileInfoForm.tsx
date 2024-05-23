@@ -1,6 +1,8 @@
 'use client'
 
 import { saveProfile } from "@/actions/profileInfoActions"
+import { uploadToS3 } from "@/actions/uploadActions";
+import { ChangeEvent } from "react";
 
 const ProfileInfoForm = () => {
 
@@ -9,12 +11,26 @@ const ProfileInfoForm = () => {
         console.log(result);
     }
 
+    
+    async function upload(ev: ChangeEvent<HTMLInputElement>) {
+        const target = ev.target as HTMLInputElement;
+        if (target.files?.length) {
+            const file = target.files[0];
+            const formData = new FormData;
+            formData.set('file', file);
+            await uploadToS3(file);
+        }
+    }
+
 
   return (
     <form action={handleFormAction}>
         <div className="bg-gray-200 p-4 rounded-lg">
                 <div className="bg-gray-300 size-24 rounded-full p-4">avatar</div>
-                <div>cover image</div>
+                <div>
+                    cover image
+                    <input type="file" onChange={ev => upload(ev)}/>
+                </div>
             </div>
             <div>
                 <label className="block mt-4">username</label>
