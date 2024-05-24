@@ -9,13 +9,13 @@ export async function saveProfile(formData: FormData){
     const session = await getServerSession(authOptions);
     if (!session) throw 'you need to be logged in';
     const email = session.user?.email;
-    const { username, displayName, bio } = Object.fromEntries(formData);
+    const { username, displayName, bio, coverUrl } = Object.fromEntries(formData);
     const profileInfoDoc = await ProfileInfoModel.findOne({email});
     if (profileInfoDoc) {
-        profileInfoDoc.set({ username, displayName, bio });
+        profileInfoDoc.set({ username, displayName, bio, coverUrl });
         await profileInfoDoc.save();
     } else {
-        await ProfileInfoModel.create({ username, displayName, bio, email });
+        await ProfileInfoModel.create({ username, displayName, bio, email, coverUrl });
     }
 
     return true;

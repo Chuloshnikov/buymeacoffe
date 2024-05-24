@@ -1,35 +1,28 @@
 'use client'
 
-import { saveProfile } from "@/actions/profileInfoActions"
-import { uploadToS3 } from "@/actions/uploadActions";
-import { ChangeEvent } from "react";
+import { useState } from "react";
+import { saveProfile } from "@/actions/profileInfoActions";
+import UploadButton from "./UploadButton";
+
 
 const ProfileInfoForm = () => {
+    const [coverUrl, setCoverUrl] = useState('');
 
     async function handleFormAction(formData: FormData) {
         const result = await saveProfile(formData);
         console.log(result);
     }
 
-    
-    async function upload(ev: ChangeEvent<HTMLInputElement>) {
-        const target = ev.target as HTMLInputElement;
-        if (target.files?.length) {
-            const file = target.files[0];
-            const formData = new FormData;
-            formData.set('file', file);
-            await uploadToS3(file);
-        }
-    }
 
 
   return (
     <form action={handleFormAction}>
-        <div className="bg-gray-200 p-4 rounded-lg">
-                <div className="bg-gray-300 size-24 rounded-full p-4">avatar</div>
-                <div>
-                    cover image
-                    <input type="file" onChange={ev => upload(ev)}/>
+        <div className="border p-4 rounded-lg">
+                <div className="border bg-gray-200 size-24 rounded-full p-4 text-center">avatar</div>
+                <div className="flex gap-1 items-center">
+                    <span className="font-medium">cover image</span>
+                    <UploadButton onUploadComplete={setCoverUrl}/>
+                    <input type="text" name="coverUrl" value={coverUrl}/>
                 </div>
             </div>
             <div>

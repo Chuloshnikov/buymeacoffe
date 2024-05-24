@@ -15,7 +15,7 @@ const profileInfoSchema = new Schema<ProfileInfo>({
     displayName: {type: String},
     bio: {type: String},
     avatarUrl: {type: String},
-    cover: {type: String},
+    coverUrl: {type: String},
 }, {timestamps: true});
 
 export const ProfileInfoModel = models?.ProfileInfo || model<ProfileInfo>('ProfileInfo', profileInfoSchema);
