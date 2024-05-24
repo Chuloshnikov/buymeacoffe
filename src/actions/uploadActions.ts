@@ -1,6 +1,6 @@
 'use server'
 
-import { S3Client } from "@aws-sdk/client-s3";
+import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import uniqid from 'uniqid';
 
 export async function uploadToS3(formData: FormData) {
