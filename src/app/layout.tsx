@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import { authOptions } from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
+import { Toaster } from "react-hot-toast";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -24,6 +25,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Toaster/>
         <Header session={session}/>
         {children}
       </body>
