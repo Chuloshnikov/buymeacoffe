@@ -4,6 +4,7 @@ import { useState } from "react";
 import { saveProfile } from "@/actions/profileInfoActions";
 import UploadButton from "./UploadButton";
 import { ProfileInfo } from "@/models/ProfileInfo";
+import Image from "next/image";
 
 type Props = {
     profileInfo: ProfileInfo|null;
@@ -24,9 +25,18 @@ const ProfileInfoForm = ({profileInfo}: Props) => {
   return (
     <form action={handleFormAction}>
         <div className="border p-4 rounded-lg">
-                <div className="border bg-gray-200 size-24 rounded-full p-4 text-center">
-                    avatar
-                    <UploadButton onUploadComplete={setAvatarUrl}/>
+                <div className="relative border bg-gray-200 size-24 rounded-full p-4 text-center">
+                    <div className="rounded-full size-24 overflow-hidden">
+                        <Image 
+                        width={120}
+                        height={120}
+                        src={avatarUrl || ''} 
+                        alt="avatar"
+                        />
+                    </div>
+                    <div className="absolute bottom-0 right-0">
+                        <UploadButton onUploadComplete={setAvatarUrl}/>
+                    </div>
                 </div>
                 <div className="flex gap-1 items-center">
                     <span className="font-medium">cover image</span>
