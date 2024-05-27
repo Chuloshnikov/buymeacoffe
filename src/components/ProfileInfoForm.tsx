@@ -5,6 +5,7 @@ import { saveProfile } from "@/actions/profileInfoActions";
 import UploadButton from "./UploadButton";
 import { ProfileInfo } from "@/models/ProfileInfo";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 type Props = {
     profileInfo: ProfileInfo|null;
@@ -16,8 +17,9 @@ const ProfileInfoForm = ({profileInfo}: Props) => {
     const [avatarUrl, setAvatarUrl] = useState(profileInfo?.avatarUrl);
 
     async function handleFormAction(formData: FormData) {
-        const result = await saveProfile(formData);
-        console.log(result);
+       
+        await saveProfile(formData);
+        toast.success('Profile saved');
     }
 
 
