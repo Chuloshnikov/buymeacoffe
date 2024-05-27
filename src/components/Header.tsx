@@ -14,7 +14,7 @@ const Header = ({session}: {session:Session|null}) => {
     const img = session?.user?.image as string;
 
   return (
-    <header className="mb-16">
+    <header className="mb-4">
          <div className="flex justify-between max-w-2xl mx-auto px-4 py-4">
             <Link href={'/'} className="inline-flex gap-1 items-center">
                 <BiCoffeeTogo className="h-8 w-8"/>
