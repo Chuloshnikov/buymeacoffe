@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import { ImUpload3 } from "react-icons/im";
 import { uploadToS3 } from "@/actions/uploadActions";
 
-const UploadButton = ({ onUploadComplete }: {onUploadComplete: (url: string) => void}) => {
+const UploadButton = ({ onUploadComplete, label }: {onUploadComplete: (url: string) => void, label: string}) => {
 
     async function upload(ev: ChangeEvent<HTMLInputElement>) {
         const target = ev.target as HTMLInputElement;
@@ -17,7 +17,7 @@ const UploadButton = ({ onUploadComplete }: {onUploadComplete: (url: string) => 
 
   return (
     <>
-        <label className="bg-yellow-300 p-2 inline-flex rounded-lg cursor-pointer">
+        <label className="bg-yellow-300 shadow-sm shadow-black/50 p-2 rounded-lg cursor-pointer flex gap-1 items-center">
             <ImUpload3 />
             <input className="hidden" type="file" onChange={ev => upload(ev)}/>
         </label>

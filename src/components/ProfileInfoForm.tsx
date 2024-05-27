@@ -24,28 +24,35 @@ const ProfileInfoForm = ({profileInfo}: Props) => {
 
   return (
     <form action={handleFormAction}>
-        <div className="border p-4 rounded-lg">
-                <div className="relative border bg-gray-200 size-24 rounded-full p-4 text-center">
-                    <div className="rounded-full size-24 overflow-hidden">
+        <div className="relative border bg-gray-100 rounded-lg h-48 mb-4">
+            <Image 
+            src={coverUrl || ''} 
+            alt="cover image"
+            width={1024}
+            height={1024}
+            className="w-full h-48 object-cover object-center rounded-lg"
+            />
+                <div className="absolute left-4 -bottom-4 z-10 border bg-gray-100 size-24 rounded-lg">
+                    <div className="rounded-lg size-24 overflow-hidden border-2 border-yellow-300">
                         <Image 
+                        src={avatarUrl || ''} 
                         width={120}
                         height={120}
-                        src={avatarUrl || ''} 
                         alt="avatar"
                         />
                     </div>
-                    <div className="absolute bottom-0 right-0">
+                    <div className="absolute -bottom-2 -right-2">
                         <UploadButton onUploadComplete={setAvatarUrl}/>
                     </div>
+                    <input type="hidden" name="avatarUrl" value={avatarUrl}/>
                 </div>
-                <div className="flex gap-1 items-center">
-                    <span className="font-medium">cover image</span>
+                <div className="absolute right-2 bottom-2">
                     <UploadButton onUploadComplete={setCoverUrl}/>
-                    <input type="text" name="coverUrl" value={coverUrl}/>
+                    <input type="hidden" name="coverUrl" value={coverUrl}/>
                 </div>
             </div>
             <div>
-                <label className="block mt-4">username</label>
+                <label className="block mt-4" htmlFor="usernameIn">username</label>
                 <input 
                 defaultValue={profileInfo?.username} 
                 name="username" 
@@ -55,7 +62,7 @@ const ProfileInfoForm = ({profileInfo}: Props) => {
                 />
             </div>
             <div>
-                <label className="block mt-4">display name</label>
+                <label className="block mt-4" htmlFor="displayNameIn">display name</label>
                 <input 
                 defaultValue={profileInfo?.displayName} 
                 name="displayName" 
@@ -65,7 +72,7 @@ const ProfileInfoForm = ({profileInfo}: Props) => {
                 />
             </div>
             <div>
-            <label className="block mt-4">bio</label>
+            <label className="block mt-4" htmlFor="bioIn">bio</label>
                 <textarea 
                 defaultValue={profileInfo?.bio} 
                 name="bio" 
