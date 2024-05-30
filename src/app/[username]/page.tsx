@@ -1,6 +1,7 @@
 import { ProfileInfo, ProfileInfoModel } from "@/models/ProfileInfo";
 import mongoose from "mongoose";
 import Image from "next/image";
+import { FaCoffee } from "react-icons/fa";
 
 type Props = {
     params:{
@@ -30,8 +31,31 @@ export default async function SingleProfilePage({params}: Props) {
                 alt="cover image" 
                 width={2048} 
                 height={2048} 
-                className="object-cover object-center h-48"
+                className="object-cover object-center h-48 rounded-xl"
                 />
+            </div>
+            <div className="max-w-2xl px-2 mx-auto relative -mt-16">
+                <div className="flex items-end gap-3">
+                    <div className="size-36 overflow-hidden rounded-xl border-4 border-white">
+                        <Image 
+                        src={profileInfoDoc.avatarUrl} 
+                        alt="cover image" 
+                        width={2048} 
+                        height={2048} 
+                        className="size-36 object-cover object-center"
+                        />
+                    </div>
+                    <div className="mb-1">
+                        <h1 className="text-4xl font-semibold">
+                            {profileInfoDoc.displayName}
+                        </h1>
+                        <h2 className="flex gap-1 items-center">
+                            <FaCoffee />
+                            <span>/</span>
+                            <span>{profileInfoDoc.username}</span>
+                        </h2>
+                    </div>
+                </div>
             </div>
         </div>
     )
