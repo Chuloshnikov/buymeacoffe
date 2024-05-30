@@ -53,28 +53,30 @@ const ProfileInfoForm = ({profileInfo}: Props) => {
                     <input type="hidden" name="coverUrl" value={coverUrl}/>
                 </div>
             </div>
-            <div>
-                <label className="block mt-4" htmlFor="usernameIn">username</label>
-                <input 
-                defaultValue={profileInfo?.username} 
-                name="username" 
-                id="userNameIn" 
-                type="text" 
-                placeholder="username"
-                />
+            <div className="grid grid-cols-2 gap-2">
+                <div>
+                    <label className="input-label" htmlFor="usernameIn">username</label>
+                    <input 
+                    defaultValue={profileInfo?.username} 
+                    name="username" 
+                    id="userNameIn" 
+                    type="text" 
+                    placeholder="username"
+                    />
+                </div>
+                <div>
+                    <label className="input-label" htmlFor="displayNameIn">display name</label>
+                    <input 
+                    defaultValue={profileInfo?.displayName} 
+                    name="displayName" 
+                    id="displayNameIn" 
+                    type="text" 
+                    placeholder="display name"
+                    />
+                </div>
             </div>
             <div>
-                <label className="block mt-4" htmlFor="displayNameIn">display name</label>
-                <input 
-                defaultValue={profileInfo?.displayName} 
-                name="displayName" 
-                id="displayNameIn" 
-                type="text" 
-                placeholder="display name"
-                />
-            </div>
-            <div>
-            <label className="block mt-4" htmlFor="bioIn">bio</label>
+            <label className="input-label" htmlFor="bioIn">bio</label>
                 <textarea 
                 defaultValue={profileInfo?.bio} 
                 name="bio" 
