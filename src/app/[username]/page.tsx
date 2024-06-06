@@ -56,6 +56,18 @@ export default async function SingleProfilePage({params}: Props) {
                         </h2>
                     </div>
                 </div>
+                <div className="grid grid-cols-2 gap-4 mt-4">
+                    <div className="bg-white rounded-xl p-4 shadow-sm">
+                        <h3 className="font-semibold">About {profileInfoDoc.username}</h3>
+                        {profileInfoDoc.bio}
+                        <hr className="my-4"/>
+                        <h3 className="font-semibold">Recent supporters</h3>
+                        <p>no recent donations</p>
+                    </div>
+                    <div className="bg-white rounded-xl p-4 shadow-sm">
+                        form for new donations
+                    </div>
+                </div>
             </div>
         </div>
     )
