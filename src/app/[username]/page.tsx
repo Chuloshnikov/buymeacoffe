@@ -1,3 +1,4 @@
+import DonationForm from "@/components/DonationForm";
 import { ProfileInfo, ProfileInfoModel } from "@/models/ProfileInfo";
 import mongoose from "mongoose";
 import Image from "next/image";
@@ -65,7 +66,7 @@ export default async function SingleProfilePage({params}: Props) {
                         <p>no recent donations</p>
                     </div>
                     <div className="bg-white rounded-xl p-4 shadow-sm">
-                        form for new donations
+                        <DonationForm/>
                     </div>
                 </div>
             </div>
