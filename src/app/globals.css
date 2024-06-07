@@ -14,3 +14,11 @@ input[type="text"], textarea{
 label.input-label {
     @apply block mt-2 ml-1 text-xs uppercase font-bold text-gray-400;
 }
+
+button.amount{
+    @apply rounded-full size-12 border border-yellow-300 justify-center inline-flex items-center;
+}
+
+button.amount.active{
+    @apply bg-yellow-300;
+}
