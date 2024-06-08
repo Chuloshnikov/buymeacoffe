@@ -86,7 +86,7 @@ const ProfileInfoForm = ({profileInfo}: Props) => {
                 />
             </div>
             <div>
-                <button className="bg-yellow-300 px-4 py-2 rounded-lg mt-4">
+                <button className="bg-yellow-300 px-4 py-2 rounded-lg mt-4 hover:bg-yellow-400 duration-200 font-semibold">
                     Save profile
                 </button>
             </div>
