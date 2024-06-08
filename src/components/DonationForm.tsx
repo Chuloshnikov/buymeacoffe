@@ -6,6 +6,7 @@ const DonationForm = () => {
 
     const [numberInputValue, setNumberInputValue]  = useState('');
     const [amount, setAmount] = useState(1);
+    const [crypto, setCrypto] = useState('btc');
 
 
     useEffect(() => {
@@ -52,6 +53,35 @@ const DonationForm = () => {
         </div>
         <div className="mt-2">
           <textarea name="" placeholder="Say something nice"></textarea>
+        </div>
+        <div className="mt-2">
+          <h3 className="text-xs text-gray-500 mb-1">Pay with selected crypto of with credit card</h3>
+          <div className="flex gap-1">
+            <button 
+            type="button"
+            onClick={() => setCrypto('btc')}
+            className={"cryptoBtn " + (crypto === "btc"  ? "active" : '') }
+            >
+              <span>BTC</span>
+              <p>BITCOIN</p>
+            </button>
+            <button 
+            type="button"
+            onClick={() => setCrypto('eth')}
+            className={"cryptoBtn " + (crypto === "eth"  ? "active" : '') }
+            >
+              <span>ETH</span>
+              <p>Ethereum</p>
+            </button>
+            <button 
+            type="button"
+            onClick={() => setCrypto('ltc')}
+            className={"cryptoBtn " + (crypto === "ltc"  ? "active" : '') }
+            >
+              <span>LTC</span>
+              <p>Litecoin</p>
+            </button>
+          </div>
         </div>
         <div className="mt-2">
           <button className="bg-yellow-300 w-full rounded-xl py-2 hover:bg-yellow-400 duration-300">
