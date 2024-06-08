@@ -1,6 +1,7 @@
 "use client";
 import { FaCoffee } from "react-icons/fa";
 import { useState, useEffect } from 'react';
+import { createDonation } from "@/actions/donationActions";
 
 const DonationForm = () => {
 
@@ -23,8 +24,18 @@ const DonationForm = () => {
       }
     }, [numberInputValue]);
 
+
+    async function handleFormSubmit(formData: FormData) {
+      formData.set('amount', amount.toString());
+      formData.set('crypto', crypto);
+      const url = await createDonation(formData);
+      if (window && window.location) {
+        window.location.href = url;
+      }
+    }
+
   return (
-    <form>
+    <form action={handleFormSubmit}>
         <div className="border border-yellow-300 bg-yellow-300/10 rounded-xl p-4 flex gap-2 items-center">
             <FaCoffee/>
             <span>x</span>
@@ -49,10 +60,10 @@ const DonationForm = () => {
             />
         </div>
         <div className="mt-2">
-          <input type="text" placeholder="Your name"/>
+          <input name="name" type="text" placeholder="Your name"/>
         </div>
         <div className="mt-2">
-          <textarea name="" placeholder="Say something nice"></textarea>
+          <textarea name="message" placeholder="Say something nice"></textarea>
         </div>
         <div className="mt-2">
           <h3 className="text-xs text-gray-500 mb-1">Pay with selected crypto of with credit card</h3>
