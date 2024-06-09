@@ -3,7 +3,7 @@ import { FaCoffee } from "react-icons/fa";
 import { useState, useEffect } from 'react';
 import { createDonation } from "@/actions/donationActions";
 
-const DonationForm = () => {
+const DonationForm = ({email}: {email:string}) => {
 
     const [numberInputValue, setNumberInputValue]  = useState('');
     const [amount, setAmount] = useState(1);
@@ -28,6 +28,7 @@ const DonationForm = () => {
     async function handleFormSubmit(formData: FormData) {
       formData.set('amount', amount.toString());
       formData.set('crypto', crypto);
+      formData.set('email', email);
       const url = await createDonation(formData);
       if (window && window.location) {
         window.location.href = url;
