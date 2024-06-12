@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import { ImUpload3 } from "react-icons/im";
 import { uploadToS3 } from "@/actions/uploadActions";
 
-const UploadButton = ({ onUploadComplete, label }: {onUploadComplete: (url: string) => void, label: string}) => {
+const UploadButton = ({ onUploadComplete }: {onUploadComplete: (url: string) => void, label: string}) => {
 
     async function upload(ev: ChangeEvent<HTMLInputElement>) {
         const target = ev.target as HTMLInputElement;
