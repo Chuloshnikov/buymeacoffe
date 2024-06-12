@@ -1,4 +1,6 @@
 import DonationForm from "@/components/DonationForm";
+import DonationStatus from "@/components/DonationStatus";
+import { Donation, DonationModel } from "@/models/Donation";
 import { ProfileInfo, ProfileInfoModel } from "@/models/ProfileInfo";
 import mongoose from "mongoose";
 import Image from "next/image";
@@ -24,8 +26,11 @@ export default async function SingleProfilePage({params}: Props) {
             </div>
         );
     }
+
+    const donations:Donation[] = await DonationModel.find({paid: true, email: profileInfoDoc.email})
     return (
         <div>
+            <DonationStatus/>
             <div className="w-full h-48">
                 <Image 
                 src={profileInfoDoc.coverUrl} 
@@ -63,7 +68,36 @@ export default async function SingleProfilePage({params}: Props) {
                         {profileInfoDoc.bio}
                         <hr className="my-4"/>
                         <h3 className="font-semibold">Recent supporters</h3>
-                        <p>no recent donations</p>
+                        {!donations.length && (
+                            <>
+                                <p>no recent donations</p>
+                            </>
+                        )}
+                        {donations.length > 0 && (
+                            <div className="mt-2">
+                                 {donations.map(donation => (
+                                <div 
+                                    key={donation._id}
+                                    className="py-2 border-t"
+                                    >
+                                            <h3>
+                                                <span className="font-semibold mt-6">
+                                                    {donation.name}
+                                                </span>
+                                                {' '}
+                                                <span className="text-gray-400">
+                                                    bought you {donation.amount > 1 ? donation.amount + ' coffees' : 'a coffee'}
+                                                    {donation.amount === 1 && 'bought you a coffee'}
+                                                    {donation.amount > 1 && `bought you ${donation.amount} coffee(s)`}
+                                                </span>
+                                               
+                                                
+                                            </h3>
+                                            <p className="bg-gray-100 p-2 rounded-md">{donation.message}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
                     <div className="bg-white rounded-xl p-4 shadow-sm">
                         <DonationForm email={profileInfoDoc.email}/>
