@@ -1,6 +1,6 @@
 import { Schema, model, models } from "mongoose";
 
-type Donation = {
+export type Donation = {
     amount: number;
     name: string;
     message?: string;
