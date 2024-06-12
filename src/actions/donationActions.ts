@@ -19,9 +19,9 @@ export async function createDonation(formData: FormData): Promise<string | false
     }
     //create a crryptomus invoice end return the url
     const endpoint = 'https://api.cryptomus.com/v1/payment';
-    const apiKey = rocess.env.CRIPTOMUS_PAYMENT_API_KEY as string;
+    const apiKey = process.env.CRIPTOMUS_PAYMENT_API_KEY as string;
     const data = {
-        amount: (parseInt(amount as string) * 5).toString() + '.00',
+        amount: (parseInt(amount as string) * 2).toString() + '.00',
         currency: 'USD',
         order_id: donationDoc._id.toString(),
         to_currency: (crypto as string).toUpperCase(),

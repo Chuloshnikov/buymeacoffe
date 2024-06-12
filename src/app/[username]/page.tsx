@@ -66,7 +66,7 @@ export default async function SingleProfilePage({params}: Props) {
                         <p>no recent donations</p>
                     </div>
                     <div className="bg-white rounded-xl p-4 shadow-sm">
-                        <DonationForm/>
+                        <DonationForm email={profileInfoDoc.email}/>
                     </div>
                 </div>
             </div>
