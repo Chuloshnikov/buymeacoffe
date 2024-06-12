@@ -30,7 +30,10 @@ const DonationForm = ({email}: {email:string}) => {
       formData.set('crypto', crypto);
       formData.set('email', email);
       const url = await createDonation(formData);
-      if (window && window.location) {
+      if (!url) {
+        return;
+      }
+      if (url && window && window.location) {
         window.location.href = url;
       }
     }
